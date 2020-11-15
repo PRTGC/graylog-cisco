@@ -1,713 +1,825 @@
 {
+  "id": "674b23ce-5f3c-43f3-a4b1-82e2780ade73",
+  "rev": 1,
   "v": "1",
-  "id": "b918df84-8ee5-4a22-8daa-885dcdef3c4f",
-  "rev": 3,
-  "name": "Cisco Switches And Routers",
+  "name": "Cisco Switches And Routers v4",
   "summary": "Content Pack parses Cisco IOS syslog messages",
-  "description": "Content Pack uses GROK and default bind port is 1515.\nCisco syslog config example:\nlogging origin-id ip\nlogging source-interface <interface>\nlogging host <graylog-server> transport udp port 1515",
+  "description": "Adapted by JR from: Ville Leinonen's Content pack\nContent Pack uses GROK and default bind port is 1515.\\nCisco syslog config example:\\nlogging origin-id ip\\nlogging source-interface <interface>\\nlogging host <graylog-server> transport udp port 1515\",\n  \"vendor",
   "vendor": "Ville Leinonen",
-  "url": "https://github.com/hrleinonen/graylog-cisco",
+  "url": "https://github.com/PRTGC/graylog-cisco/blob/master/Cisco_Switches_and_Routers.json",
+  "created_at": "2020-11-15T17:33:35.901Z",
+  "server_version": "3.3.8+e223f85",
   "parameters": [],
   "entities": [
     {
-      "v": "1",
+      "id": "e7cb04cd-0711-46ec-ae3f-c877e58b7987",
       "type": {
         "name": "dashboard",
-        "version": "1"
+        "version": "2"
       },
-      "id": "b82d3d37-e603-428d-bfa2-5c435bc337bd",
+      "v": "4",
       "data": {
+        "summary": {
+          "@type": "string",
+          "@value": "Converted Dashboard"
+        },
+        "search": {
+          "queries": [
+            {
+              "id": "7aee10d3-ac0f-4175-9c01-0a06deec8f3e",
+              "timerange": {
+                "type": "relative",
+                "range": 300
+              },
+              "query": {
+                "type": "elasticsearch",
+                "query_string": ""
+              },
+              "search_types": [
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "CISCO_MESSAGE",
+                      "limit": 10
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "427838a9-e3ad-4374-bf4c-924e442a43af",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "CISCO_MESSAGE",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "29172882-cc42-44f6-82de-dbe4cfa6860b",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "CISCO_MESSAGE",
+                      "limit": 10
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "e4263256-f2c8-4263-83ef-0ac4b1168cac",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "CISCO_MESSAGE",
+                      "direction": "Ascending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "CISCO_MNEMONIC",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "2373370a-a1cb-4aa6-a5f9-466f63f22cb5",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "gl2_source_input:5cc199348a66df5bf971ef41"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count(CISCO_MESSAGE)",
+                      "field": "CISCO_MESSAGE"
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "time",
+                      "field": "timestamp",
+                      "interval": {
+                        "type": "auto",
+                        "scaling": 1
+                      }
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "736b5173-2983-42ba-8ccf-472a3ecadcda",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "CISCO_FACILITY",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "8e0fe432-f241-4144-bc24-01e8b21001cc",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "level",
+                      "limit": 10
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "31ada4e0-1dad-4d01-9fc1-ae62badec0a5",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "level",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [],
+          "requires": {},
+          "owner": "admin",
+          "created_at": "2020-11-15T17:21:26.775Z"
+        },
+        "created_at": "2020-11-15T16:51:34.536Z",
+        "requires": {},
+        "state": {
+          "7aee10d3-ac0f-4175-9c01-0a06deec8f3e": {
+            "selected_fields": null,
+            "static_message_list_id": null,
+            "titles": {
+              "widget": {
+                "334cb490-2405-4a78-8d97-58714638eead": "Top 10 Syslog Senders 1 Day",
+                "ba738bd5-f932-46a5-bbfd-aabea422cae4": "Number of Messages per hour",
+                "9081efe4-fe44-4f02-904b-8b01bc46b570": "10 Least Used MNEMONICS 1 Day",
+                "63379512-26d9-4d5a-9cda-872e5702eff6": "10 Least Common MSG 1 Day",
+                "812d32ed-bfbc-4866-8d56-2e7fa85d6f56": "10 Most Used MNEMONICS 1 Day",
+                "ca92a537-6c94-4786-a7ad-2f0d5eaced22": "Cisco Syslog Levels 1 Day",
+                "7a595640-e91f-463f-a7e7-855d8704ec44": "10 Most Common MSG 1 Day"
+              }
+            },
+            "widgets": [
+              {
+                "id": "7a595640-e91f-463f-a7e7-855d8704ec44",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "CISCO_MESSAGE",
+                      "type": "values",
+                      "config": {
+                        "limit": 10
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "CISCO_MESSAGE",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "ba738bd5-f932-46a5-bbfd-aabea422cae4",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "gl2_source_input:5cc199348a66df5bf971ef41"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "area",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "timestamp",
+                      "type": "time",
+                      "config": {
+                        "interval": {
+                          "type": "auto",
+                          "scaling": null
+                        }
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count(CISCO_MESSAGE)"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": {
+                    "interpolation": "linear"
+                  },
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "63379512-26d9-4d5a-9cda-872e5702eff6",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "CISCO_MESSAGE",
+                      "type": "values",
+                      "config": {
+                        "limit": 10
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "CISCO_MESSAGE",
+                      "direction": "Ascending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "ca92a537-6c94-4786-a7ad-2f0d5eaced22",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "level",
+                      "type": "values",
+                      "config": {
+                        "limit": 10
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "level",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "9081efe4-fe44-4f02-904b-8b01bc46b570",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "CISCO_FACILITY",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "812d32ed-bfbc-4866-8d56-2e7fa85d6f56",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "CISCO_MNEMONIC",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "334cb490-2405-4a78-8d97-58714638eead",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              }
+            ],
+            "widget_mapping": {
+              "63379512-26d9-4d5a-9cda-872e5702eff6": [
+                "e4263256-f2c8-4263-83ef-0ac4b1168cac"
+              ],
+              "ca92a537-6c94-4786-a7ad-2f0d5eaced22": [
+                "31ada4e0-1dad-4d01-9fc1-ae62badec0a5"
+              ],
+              "7a595640-e91f-463f-a7e7-855d8704ec44": [
+                "427838a9-e3ad-4374-bf4c-924e442a43af"
+              ],
+              "334cb490-2405-4a78-8d97-58714638eead": [
+                "29172882-cc42-44f6-82de-dbe4cfa6860b"
+              ],
+              "ba738bd5-f932-46a5-bbfd-aabea422cae4": [
+                "736b5173-2983-42ba-8ccf-472a3ecadcda"
+              ],
+              "9081efe4-fe44-4f02-904b-8b01bc46b570": [
+                "8e0fe432-f241-4144-bc24-01e8b21001cc"
+              ],
+              "812d32ed-bfbc-4866-8d56-2e7fa85d6f56": [
+                "2373370a-a1cb-4aa6-a5f9-466f63f22cb5"
+              ]
+            },
+            "positions": {
+              "334cb490-2405-4a78-8d97-58714638eead": {
+                "col": 7,
+                "row": 1,
+                "height": 4,
+                "width": 2
+              },
+              "ba738bd5-f932-46a5-bbfd-aabea422cae4": {
+                "col": 1,
+                "row": 10,
+                "height": 2,
+                "width": 8
+              },
+              "9081efe4-fe44-4f02-904b-8b01bc46b570": {
+                "col": 3,
+                "row": 1,
+                "height": 4,
+                "width": 2
+              },
+              "63379512-26d9-4d5a-9cda-872e5702eff6": {
+                "col": 1,
+                "row": 5,
+                "height": 5,
+                "width": 4
+              },
+              "812d32ed-bfbc-4866-8d56-2e7fa85d6f56": {
+                "col": 1,
+                "row": 1,
+                "height": 4,
+                "width": 2
+              },
+              "ca92a537-6c94-4786-a7ad-2f0d5eaced22": {
+                "col": 5,
+                "row": 1,
+                "height": 4,
+                "width": 2
+              },
+              "7a595640-e91f-463f-a7e7-855d8704ec44": {
+                "col": 5,
+                "row": 5,
+                "height": 5,
+                "width": 4
+              }
+            },
+            "formatting": {
+              "highlighting": []
+            },
+            "display_mode_settings": {
+              "positions": {}
+            }
+          }
+        },
+        "properties": [],
+        "owner": null,
         "title": {
           "@type": "string",
           "@value": "Cisco Switches And Routers"
         },
+        "type": "DASHBOARD",
         "description": {
           "@type": "string",
           "@value": "Cisco Switches And Routers Syslog Graphs"
-        },
-        "widgets": [
-          {
-            "id": {
-              "@type": "string",
-              "@value": "b2f3cb12-11e7-4a29-94af-1ad332b256ff"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "10 Least Used MNEMONICS 1 Day"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "asc"
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              },
-              "field": {
-                "@type": "string",
-                "@value": "CISCO_MNEMONIC_FIRSTPART"
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 10
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 3
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "eb3d380f-4313-4de1-927b-4a2ad5078aa1"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Number of Messages per hour"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "FIELD_CHART"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "renderer": {
-                "@type": "string",
-                "@value": "area"
-              },
-              "interpolation": {
-                "@type": "string",
-                "@value": "linear"
-              },
-              "interval": {
-                "@type": "string",
-                "@value": "hour"
-              },
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "valuetype": {
-                "@type": "string",
-                "@value": "count"
-              },
-              "relative": {
-                "@type": "integer",
-                "@value": 86400
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "rangeType": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "field": {
-                "@type": "string",
-                "@value": "CISCO_MESSAGE"
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 8
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 10
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "93446600-57d2-4799-bab9-c1d4f94ff618"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Cisco Syslog Levels 1 Day"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 10
-              },
-              "field": {
-                "@type": "string",
-                "@value": "level"
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 8
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 5
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "62145413-7d6e-4c0d-91ca-da6d44e39a37"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "10 Most Used MNEMONICS 1 Day"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 10
-              },
-              "field": {
-                "@type": "string",
-                "@value": "CISCO_MNEMONIC_FIRSTPART"
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 10
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "cb8926f4-2fea-4727-b076-40ebe0e220dd"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Top 10 Syslog Senders 1 Day"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              },
-              "field": {
-                "@type": "string",
-                "@value": "source"
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 10
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 7
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "994f84fc-448a-4656-a15b-aa168e3099f4"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "10 Least Common MSG 1 Day"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "asc"
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 10
-              },
-              "field": {
-                "@type": "string",
-                "@value": "CISCO_MESSAGE"
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 10
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "a92768f0-e687-470b-8640-0f26fc2e694a"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "10 Most Common MSG 1 Day"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 86400
-              }
-            },
-            "configuration": {
-              "query": {
-                "@type": "string",
-                "@value": "gl2_source_input:5cc199348a66df5bf971ef41"
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 86400
-                }
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 10
-              },
-              "field": {
-                "@type": "string",
-                "@value": "CISCO_MESSAGE"
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 10
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 5
-              }
-            }
-          }
-        ]
+        }
       },
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "2d7325af-de85-4727-861e-da0769b24a96",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "84397a4e-dbbc-48d7-b2cd-dac1e7f3eed0",
+      "v": "1",
       "data": {
-        "name": "CISCO_MNEMONIC_FIRSTPART",
+        "name": "CISCO_FACILITY",
         "pattern": "[a-zA-Z0-9_]+"
       },
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "576e40a3-f8ca-4d96-aab7-9350b5ed2918",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "f16125d2-3ffc-45a8-bc94-84772fd912ce",
+      "v": "1",
       "data": {
-        "name": "CISCO_MNEMONIC_LASTPART",
+        "name": "CISCOTIMESTAMPTZ",
+        "pattern": "%{MONTH} +%{MONTHDAY}(?: %{YEAR})? %{TIME}(?: %{TZ})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "8d29f6bc-4c2b-4acc-885a-2c10ff548a83",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "CISCO_MNEMONIC",
         "pattern": "(?<=-)[a-zA-Z_]+"
       },
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "476f9a3b-bcd2-4155-936f-08343392570f",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "7f1b25f8-363b-4f9a-8b04-77133f9c3c3b",
+      "v": "1",
+      "data": {
+        "name": "CISCO_SYSLOG_ID",
+        "pattern": "%{WORD:CISCO_FACILITY}-%{NONNEGINT:level}-%{USERNAME:CISCO_MNEMONIC}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "4cdd9db7-721f-472e-b93f-c1732df4249b",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
       "data": {
         "name": "SYSLOGHOST",
         "pattern": "%{IPORHOST}"
@@ -715,35 +827,35 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "0187e97e-f061-474d-a6ba-e744a78196f3",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "02c5319b-7a9f-45e8-b92a-d7a337c61016",
+      "v": "1",
       "data": {
-        "name": "MONTH",
-        "pattern": "\\b(?:Jan(?:uary|uar)?|Feb(?:ruary|ruar)?|M(?:a|ä)?r(?:ch|z)?|Apr(?:il)?|Ma(?:y|i)?|Jun(?:e|i)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|O(?:c|k)?t(?:ober)?|Nov(?:ember)?|De(?:c|z)(?:ember)?)\\b"
+        "name": "NUMBER",
+        "pattern": "(?:%{BASE10NUM})"
       },
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "3b4dd062-9dc1-4457-be3b-a63a2eab2111",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "cee069e6-ddec-47e7-a7d3-adddacf53c03",
+      "v": "1",
       "data": {
         "name": "GREEDYDATA",
         "pattern": ".*"
@@ -751,53 +863,71 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "a4ca1527-6abe-4638-aec4-90c6086091c6",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "c9ffaeed-d3e0-483d-bdaa-f6b1e1725909",
+      "v": "1",
       "data": {
-        "name": "BASE10NUM",
-        "pattern": "(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+)))"
+        "name": "MONTH",
+        "pattern": "\\b(?:Jan(?:uary|uar)?|Feb(?:ruary|ruar)?|M(?:a|ä)?r(?:ch|z)?|Apr(?:il)?|Ma(?:y|i)?|Jun(?:e|i)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|O(?:c|k)?t(?:ober)?|Nov(?:ember)?|De(?:c|z)(?:ember)?)\\b"
       },
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "8d85d65e-662e-4200-a5eb-a096d15b9b80",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "b65787a8-5730-4140-b0c3-2a3251f3129b",
+      "v": "1",
       "data": {
-        "name": "USERNAME",
-        "pattern": "[a-zA-Z0-9._-]+"
+        "name": "YEAR",
+        "pattern": "(?>\\d\\d){1,2}"
       },
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "580a1601-fa54-4a23-a380-b7a4a4e09d90",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "ff9b5cc5-5d7a-473f-83ac-2f97e4259dd8",
+      "v": "1",
+      "data": {
+        "name": "TZ",
+        "pattern": "(?:[PMCE][SD]T|UTC)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "3091cdd2-0281-4c9c-8c47-d0192d2ca168",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
       "data": {
         "name": "TIME",
         "pattern": "(?!<[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])"
@@ -805,17 +935,89 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "4e4a6207-cfbb-4af5-8b15-f7a0a0d41e02",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "b3059200-402d-4ed7-9ac7-3d41a2db9a14",
+      "v": "1",
+      "data": {
+        "name": "MONTHDAY",
+        "pattern": "(?:(?:0[1-9])|(?:[12][0-9])|(?:3[01])|[1-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "4e3bd31d-b762-4c7b-b321-cbc1a8e1e1e5",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "WORD",
+        "pattern": "\\b\\w+\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "f45a1a50-34ad-4ff8-a42b-dea5ed4ad7a6",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "NONNEGINT",
+        "pattern": "\\b(?:[0-9]+)\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "88645359-3692-428d-8e97-df18b2dc2a37",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "USERNAME",
+        "pattern": "[a-zA-Z0-9._-]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "c8dab5f2-0116-443c-b862-e5ed4669d644",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
       "data": {
         "name": "IPORHOST",
         "pattern": "(?:%{IP}|%{HOSTNAME})"
@@ -823,17 +1025,35 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "dadfd0a3-3e9e-463e-b60c-66f10c69872e",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "91d50d78-74cf-4a8a-83b5-63e2c500caf7",
+      "v": "1",
+      "data": {
+        "name": "BASE10NUM",
+        "pattern": "(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+)))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "979f4a03-55b6-4926-b327-466cfca00eeb",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
       "data": {
         "name": "HOUR",
         "pattern": "(?:2[0123]|[01]?[0-9])"
@@ -841,17 +1061,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "18c859ff-72b6-4191-a483-9361ddaa9071",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "e1e327a3-29bc-4140-ae2f-0ab6bf381ee9",
+      "v": "1",
       "data": {
         "name": "MINUTE",
         "pattern": "(?:[0-5][0-9])"
@@ -859,17 +1079,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "20718df2-6748-4df5-bc89-b6388511fd77",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "c2b39314-6bec-4ff7-a9b2-024972003a09",
+      "v": "1",
       "data": {
         "name": "SECOND",
         "pattern": "(?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)"
@@ -877,17 +1097,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "f946bddb-e8f4-4d00-818c-4f23360cedda",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "2af5ed16-2417-4605-9efc-7fa5ee5a2277",
+      "v": "1",
       "data": {
         "name": "HOSTNAME",
         "pattern": "\\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\\.?|\\b)"
@@ -895,17 +1115,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "ee952407-f367-4b5b-8e7a-d13eda9e3c80",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "a83c226e-11b5-4bdc-8aa1-9cf88061ef0b",
+      "v": "1",
       "data": {
         "name": "IP",
         "pattern": "(?:%{IPV6}|%{IPV4})"
@@ -913,17 +1133,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "f907f1f8-dad6-4746-9a6f-b7c9336d7c8a",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "38e162e0-9223-42a4-b9bb-e7348b374f71",
+      "v": "1",
       "data": {
         "name": "IPV6",
         "pattern": "((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?"
@@ -931,17 +1151,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "4f5466bd-468d-47b0-b0ed-5fb28bc02ec7",
       "type": {
         "name": "grok_pattern",
         "version": "1"
       },
-      "id": "d6cd5344-866d-4e56-805f-363b6eac96ed",
+      "v": "1",
       "data": {
         "name": "IPV4",
         "pattern": "(?<![0-9])(?:(?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5]))(?![0-9])"
@@ -949,17 +1169,17 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
         }
       ]
     },
     {
-      "v": "1",
+      "id": "23630614-adfe-4dd9-9e0f-a076e2e4a536",
       "type": {
         "name": "input",
         "version": "1"
       },
-      "id": "329654f9-7c22-442c-a8d0-28a79ff06fb8",
+      "v": "1",
       "data": {
         "title": {
           "@type": "string",
@@ -1020,88 +1240,6 @@
             },
             "order": {
               "@type": "integer",
-              "@value": 3
-            },
-            "converters": [],
-            "configuration": {
-              "grok_pattern": {
-                "@type": "string",
-                "@value": "%{CISCO_MNEMONIC_LASTPART}"
-              }
-            },
-            "source_field": {
-              "@type": "string",
-              "@value": "message"
-            },
-            "title": {
-              "@type": "string",
-              "@value": "EXTRACTOR_CISCO_SW_SYSLOG_MNEMONIC_LASTPART"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "GROK"
-            },
-            "cursor_strategy": {
-              "@type": "string",
-              "@value": "COPY"
-            },
-            "condition_type": {
-              "@type": "string",
-              "@value": "NONE"
-            }
-          },
-          {
-            "target_field": {
-              "@type": "string",
-              "@value": ""
-            },
-            "condition_value": {
-              "@type": "string",
-              "@value": ""
-            },
-            "order": {
-              "@type": "integer",
-              "@value": 2
-            },
-            "converters": [],
-            "configuration": {
-              "grok_pattern": {
-                "@type": "string",
-                "@value": "%{CISCO_MNEMONIC_FIRSTPART}-"
-              }
-            },
-            "source_field": {
-              "@type": "string",
-              "@value": "full_message"
-            },
-            "title": {
-              "@type": "string",
-              "@value": "EXTRACTOR_CISCO_SW_SYSLOG_MNEMONIC_FIRSTPART"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "GROK"
-            },
-            "cursor_strategy": {
-              "@type": "string",
-              "@value": "COPY"
-            },
-            "condition_type": {
-              "@type": "string",
-              "@value": "NONE"
-            }
-          },
-          {
-            "target_field": {
-              "@type": "string",
-              "@value": ""
-            },
-            "condition_value": {
-              "@type": "string",
-              "@value": ""
-            },
-            "order": {
-              "@type": "integer",
               "@value": 0
             },
             "converters": [],
@@ -1143,13 +1281,13 @@
             },
             "order": {
               "@type": "integer",
-              "@value": 1
+              "@value": 0
             },
             "converters": [],
             "configuration": {
               "grok_pattern": {
                 "@type": "string",
-                "@value": "%{MONTH}  %{BASE10NUM:DATE} %{TIME}: (%)%{USERNAME:CISCO_MNEMONIC}: %{GREEDYDATA:CISCO_MESSAGE}"
+                "@value": "%{NUMBER:sequence_number}: %{CISCOTIMESTAMPTZ}: %{GREEDYDATA:message}"
               }
             },
             "source_field": {
@@ -1158,11 +1296,88 @@
             },
             "title": {
               "@type": "string",
-              "@value": "EXTRACTOR_CISCO_SW_SYSLOG"
+              "@value": "EXTRACTOR_CISCO_SW_SYSLOG_PREAMBLE"
             },
             "type": {
               "@type": "string",
               "@value": "GROK"
+            },
+            "cursor_strategy": {
+              "@type": "string",
+              "@value": "COPY"
+            },
+            "condition_type": {
+              "@type": "string",
+              "@value": "NONE"
+            }
+          },
+          {
+            "target_field": {
+              "@type": "string",
+              "@value": ""
+            },
+            "condition_value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "order": {
+              "@type": "integer",
+              "@value": 0
+            },
+            "converters": [],
+            "configuration": {
+              "grok_pattern": {
+                "@type": "string",
+                "@value": "(%)%{CISCO_SYSLOG_ID}: %{GREEDYDATA:message}"
+              }
+            },
+            "source_field": {
+              "@type": "string",
+              "@value": "message"
+            },
+            "title": {
+              "@type": "string",
+              "@value": "EXTRACTOR_CISCO_SW_SYSLOG_MNEMONICS"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "GROK"
+            },
+            "cursor_strategy": {
+              "@type": "string",
+              "@value": "COPY"
+            },
+            "condition_type": {
+              "@type": "string",
+              "@value": "NONE"
+            }
+          },
+          {
+            "target_field": {
+              "@type": "string",
+              "@value": "CISCO_MESSAGE"
+            },
+            "condition_value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "order": {
+              "@type": "integer",
+              "@value": 0
+            },
+            "converters": [],
+            "configuration": {},
+            "source_field": {
+              "@type": "string",
+              "@value": "message"
+            },
+            "title": {
+              "@type": "string",
+              "@value": "Copy Cisco Message"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "COPY_INPUT"
             },
             "cursor_strategy": {
               "@type": "string",
@@ -1178,7 +1393,118 @@
       "constraints": [
         {
           "type": "server-version",
-          "version": ">=3.0.1+de74b68"
+          "version": ">=3.3.8+e223f85"
+        }
+      ]
+    },
+    {
+      "id": "ebd72433-2379-40f1-95a0-2c31279af06a",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Cisco Stream"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "CISCO_MNEMONIC"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": "CISCO MNEMONIC"
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "CISCO_FACILITY"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Facility"
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "level"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Cisco Syslog messages"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.8+e223f85"
         }
       ]
     }

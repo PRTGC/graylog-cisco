@@ -1,6 +1,8 @@
 Graylog3 supported
 ------------------
 
+Adapted to handle hostnames with '-' and follow naming convention of the Cisco Syslog message layout
+
 Content Pack includes:
 - Couple new GROK patern files
   * CISCO_MNEMONIC_FIRSTPART
