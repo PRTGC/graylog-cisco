@@ -1,23 +1,23 @@
 {
-  "id": "674b23ce-5f3c-43f3-a4b1-82e2780ade73",
-  "rev": 1,
+  "id": "b918df84-8ee5-4a22-8daa-885dcdef3c4f",
+  "rev": 4,
   "v": "1",
-  "name": "Cisco Switches And Routers v4",
+  "name": "Cisco Switches And Routers",
   "summary": "Content Pack parses Cisco IOS syslog messages",
-  "description": "Adapted by JR from: Ville Leinonen's Content pack\nContent Pack uses GROK and default bind port is 1515.\\nCisco syslog config example:\\nlogging origin-id ip\\nlogging source-interface <interface>\\nlogging host <graylog-server> transport udp port 1515\",\n  \"vendor",
+  "description": "Content Pack uses GROK and default bind port is 1515.\nCisco syslog config example:\nlogging origin-id ip\nlogging source-interface <interface>\nlogging host <graylog-server> transport udp port 1515",
   "vendor": "Ville Leinonen",
-  "url": "https://github.com/PRTGC/graylog-cisco/blob/master/Cisco_Switches_and_Routers.json",
-  "created_at": "2020-11-15T17:33:35.901Z",
+  "url": "https://github.com/hrleinonen/graylog-cisco",
+  "created_at": "2020-11-15T18:08:18.413Z",
   "server_version": "3.3.8+e223f85",
   "parameters": [],
   "entities": [
     {
-      "id": "e7cb04cd-0711-46ec-ae3f-c877e58b7987",
+      "id": "b2a5358d-b867-4793-8f75-6685b5558d6c",
       "type": {
         "name": "dashboard",
         "version": "2"
       },
-      "v": "4",
+      "v": "1",
       "data": {
         "summary": {
           "@type": "string",
@@ -47,7 +47,7 @@
                     "range": 86400
                   },
                   "streams": [
-                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                    "ba474a77-80fc-4669-8f57-bab3cb453209"
                   ],
                   "series": [
                     {
@@ -61,20 +61,14 @@
                   "row_groups": [
                     {
                       "type": "values",
-                      "field": "CISCO_MESSAGE",
-                      "limit": 10
+                      "field": "CISCO_MNEMONIC",
+                      "limit": 15
                     }
                   ],
                   "type": "pivot",
-                  "id": "427838a9-e3ad-4374-bf4c-924e442a43af",
+                  "id": "2373370a-a1cb-4aa6-a5f9-466f63f22cb5",
                   "column_groups": [],
-                  "sort": [
-                    {
-                      "type": "pivot",
-                      "field": "CISCO_MESSAGE",
-                      "direction": "Descending"
-                    }
-                  ]
+                  "sort": []
                 },
                 {
                   "query": {
@@ -87,47 +81,7 @@
                     "range": 86400
                   },
                   "streams": [
-                    "ebd72433-2379-40f1-95a0-2c31279af06a"
-                  ],
-                  "series": [
-                    {
-                      "type": "count",
-                      "id": "count()",
-                      "field": null
-                    }
-                  ],
-                  "filter": null,
-                  "rollup": true,
-                  "row_groups": [
-                    {
-                      "type": "values",
-                      "field": "source",
-                      "limit": 50
-                    }
-                  ],
-                  "type": "pivot",
-                  "id": "29172882-cc42-44f6-82de-dbe4cfa6860b",
-                  "column_groups": [],
-                  "sort": [
-                    {
-                      "type": "pivot",
-                      "field": "source",
-                      "direction": "Descending"
-                    }
-                  ]
-                },
-                {
-                  "query": {
-                    "type": "elasticsearch",
-                    "query_string": ""
-                  },
-                  "name": "chart",
-                  "timerange": {
-                    "type": "relative",
-                    "range": 86400
-                  },
-                  "streams": [
-                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                    "ba474a77-80fc-4669-8f57-bab3cb453209"
                   ],
                   "series": [
                     {
@@ -167,7 +121,7 @@
                     "range": 86400
                   },
                   "streams": [
-                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                    "ba474a77-80fc-4669-8f57-bab3cb453209"
                   ],
                   "series": [
                     {
@@ -181,14 +135,60 @@
                   "row_groups": [
                     {
                       "type": "values",
-                      "field": "CISCO_MNEMONIC",
-                      "limit": 15
+                      "field": "level",
+                      "limit": 10
                     }
                   ],
                   "type": "pivot",
-                  "id": "2373370a-a1cb-4aa6-a5f9-466f63f22cb5",
+                  "id": "31ada4e0-1dad-4d01-9fc1-ae62badec0a5",
                   "column_groups": [],
-                  "sort": []
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "level",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ba474a77-80fc-4669-8f57-bab3cb453209"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "CISCO_MESSAGE",
+                      "limit": 10
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "427838a9-e3ad-4374-bf4c-924e442a43af",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "CISCO_MESSAGE",
+                      "direction": "Descending"
+                    }
+                  ]
                 },
                 {
                   "query": {
@@ -236,7 +236,47 @@
                     "range": 86400
                   },
                   "streams": [
-                    "ebd72433-2379-40f1-95a0-2c31279af06a"
+                    "ba474a77-80fc-4669-8f57-bab3cb453209"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "29172882-cc42-44f6-82de-dbe4cfa6860b",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "ba474a77-80fc-4669-8f57-bab3cb453209"
                   ],
                   "series": [
                     {
@@ -258,46 +298,6 @@
                   "id": "8e0fe432-f241-4144-bc24-01e8b21001cc",
                   "column_groups": [],
                   "sort": []
-                },
-                {
-                  "query": {
-                    "type": "elasticsearch",
-                    "query_string": ""
-                  },
-                  "name": "chart",
-                  "timerange": {
-                    "type": "relative",
-                    "range": 86400
-                  },
-                  "streams": [
-                    "ebd72433-2379-40f1-95a0-2c31279af06a"
-                  ],
-                  "series": [
-                    {
-                      "type": "count",
-                      "id": "count()",
-                      "field": null
-                    }
-                  ],
-                  "filter": null,
-                  "rollup": true,
-                  "row_groups": [
-                    {
-                      "type": "values",
-                      "field": "level",
-                      "limit": 10
-                    }
-                  ],
-                  "type": "pivot",
-                  "id": "31ada4e0-1dad-4d01-9fc1-ae62badec0a5",
-                  "column_groups": [],
-                  "sort": [
-                    {
-                      "type": "pivot",
-                      "field": "level",
-                      "direction": "Descending"
-                    }
-                  ]
                 }
               ]
             }
@@ -338,7 +338,7 @@
                   "query_string": ""
                 },
                 "streams": [
-                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  "ba474a77-80fc-4669-8f57-bab3cb453209"
                 ],
                 "config": {
                   "visualization": "table",
@@ -368,6 +368,54 @@
                     {
                       "type": "pivot",
                       "field": "CISCO_MESSAGE",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "334cb490-2405-4a78-8d97-58714638eead",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ba474a77-80fc-4669-8f57-bab3cb453209"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "source",
                       "direction": "Descending"
                     }
                   ]
@@ -419,6 +467,48 @@
                 }
               },
               {
+                "id": "9081efe4-fe44-4f02-904b-8b01bc46b570",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "ba474a77-80fc-4669-8f57-bab3cb453209"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "CISCO_FACILITY",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
                 "id": "63379512-26d9-4d5a-9cda-872e5702eff6",
                 "type": "aggregation",
                 "filter": null,
@@ -431,7 +521,7 @@
                   "query_string": ""
                 },
                 "streams": [
-                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  "ba474a77-80fc-4669-8f57-bab3cb453209"
                 ],
                 "config": {
                   "visualization": "table",
@@ -467,96 +557,6 @@
                 }
               },
               {
-                "id": "ca92a537-6c94-4786-a7ad-2f0d5eaced22",
-                "type": "aggregation",
-                "filter": null,
-                "timerange": {
-                  "type": "relative",
-                  "range": 86400
-                },
-                "query": {
-                  "type": "elasticsearch",
-                  "query_string": ""
-                },
-                "streams": [
-                  "ebd72433-2379-40f1-95a0-2c31279af06a"
-                ],
-                "config": {
-                  "visualization": "table",
-                  "event_annotation": false,
-                  "row_pivots": [
-                    {
-                      "field": "level",
-                      "type": "values",
-                      "config": {
-                        "limit": 10
-                      }
-                    }
-                  ],
-                  "series": [
-                    {
-                      "config": {
-                        "name": null
-                      },
-                      "function": "count()"
-                    }
-                  ],
-                  "rollup": true,
-                  "column_pivots": [],
-                  "visualization_config": null,
-                  "formatting_settings": null,
-                  "sort": [
-                    {
-                      "type": "pivot",
-                      "field": "level",
-                      "direction": "Descending"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "9081efe4-fe44-4f02-904b-8b01bc46b570",
-                "type": "aggregation",
-                "filter": null,
-                "timerange": {
-                  "type": "relative",
-                  "range": 86400
-                },
-                "query": {
-                  "type": "elasticsearch",
-                  "query_string": ""
-                },
-                "streams": [
-                  "ebd72433-2379-40f1-95a0-2c31279af06a"
-                ],
-                "config": {
-                  "visualization": "table",
-                  "event_annotation": false,
-                  "row_pivots": [
-                    {
-                      "field": "CISCO_FACILITY",
-                      "type": "values",
-                      "config": {
-                        "limit": 15
-                      }
-                    }
-                  ],
-                  "series": [
-                    {
-                      "config": {
-                        "name": null
-                      },
-                      "function": "count()"
-                    }
-                  ],
-                  "rollup": true,
-                  "column_pivots": [],
-                  "visualization_config": null,
-                  "formatting_settings": null,
-                  "sort": []
-                }
-              },
-              {
                 "id": "812d32ed-bfbc-4866-8d56-2e7fa85d6f56",
                 "type": "aggregation",
                 "filter": null,
@@ -569,7 +569,7 @@
                   "query_string": ""
                 },
                 "streams": [
-                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  "ba474a77-80fc-4669-8f57-bab3cb453209"
                 ],
                 "config": {
                   "visualization": "table",
@@ -599,7 +599,7 @@
                 }
               },
               {
-                "id": "334cb490-2405-4a78-8d97-58714638eead",
+                "id": "ca92a537-6c94-4786-a7ad-2f0d5eaced22",
                 "type": "aggregation",
                 "filter": null,
                 "timerange": {
@@ -611,17 +611,17 @@
                   "query_string": ""
                 },
                 "streams": [
-                  "ebd72433-2379-40f1-95a0-2c31279af06a"
+                  "ba474a77-80fc-4669-8f57-bab3cb453209"
                 ],
                 "config": {
                   "visualization": "table",
                   "event_annotation": false,
                   "row_pivots": [
                     {
-                      "field": "source",
+                      "field": "level",
                       "type": "values",
                       "config": {
-                        "limit": 50
+                        "limit": 10
                       }
                     }
                   ],
@@ -640,7 +640,7 @@
                   "sort": [
                     {
                       "type": "pivot",
-                      "field": "source",
+                      "field": "level",
                       "direction": "Descending"
                     }
                   ]
@@ -742,7 +742,295 @@
       ]
     },
     {
-      "id": "2d7325af-de85-4727-861e-da0769b24a96",
+      "id": "84397a4e-dbbc-48d7-b2cd-dac1e7f3eed0",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "CISCO_MNEMONIC_FIRSTPART",
+        "pattern": "[a-zA-Z0-9_]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "f16125d2-3ffc-45a8-bc94-84772fd912ce",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "CISCO_MNEMONIC_LASTPART",
+        "pattern": "(?<=-)[a-zA-Z_]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "7f1b25f8-363b-4f9a-8b04-77133f9c3c3b",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "SYSLOGHOST",
+        "pattern": "%{IPORHOST}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "02c5319b-7a9f-45e8-b92a-d7a337c61016",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "MONTH",
+        "pattern": "\\b(?:Jan(?:uary|uar)?|Feb(?:ruary|ruar)?|M(?:a|ä)?r(?:ch|z)?|Apr(?:il)?|Ma(?:y|i)?|Jun(?:e|i)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|O(?:c|k)?t(?:ober)?|Nov(?:ember)?|De(?:c|z)(?:ember)?)\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "cee069e6-ddec-47e7-a7d3-adddacf53c03",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "GREEDYDATA",
+        "pattern": ".*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "c9ffaeed-d3e0-483d-bdaa-f6b1e1725909",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "BASE10NUM",
+        "pattern": "(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+)))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "b65787a8-5730-4140-b0c3-2a3251f3129b",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "USERNAME",
+        "pattern": "[a-zA-Z0-9._-]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "ff9b5cc5-5d7a-473f-83ac-2f97e4259dd8",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "TIME",
+        "pattern": "(?!<[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "b3059200-402d-4ed7-9ac7-3d41a2db9a14",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "IPORHOST",
+        "pattern": "(?:%{IP}|%{HOSTNAME})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "91d50d78-74cf-4a8a-83b5-63e2c500caf7",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "HOUR",
+        "pattern": "(?:2[0123]|[01]?[0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "e1e327a3-29bc-4140-ae2f-0ab6bf381ee9",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "MINUTE",
+        "pattern": "(?:[0-5][0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "c2b39314-6bec-4ff7-a9b2-024972003a09",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "SECOND",
+        "pattern": "(?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "2af5ed16-2417-4605-9efc-7fa5ee5a2277",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "HOSTNAME",
+        "pattern": "\\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\\.?|\\b)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "a83c226e-11b5-4bdc-8aa1-9cf88061ef0b",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "IP",
+        "pattern": "(?:%{IPV6}|%{IPV4})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "38e162e0-9223-42a4-b9bb-e7348b374f71",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "IPV6",
+        "pattern": "((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "d6cd5344-866d-4e56-805f-363b6eac96ed",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "v": "1",
+      "data": {
+        "name": "IPV4",
+        "pattern": "(?<![0-9])(?:(?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5]))(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.1+de74b68"
+        }
+      ]
+    },
+    {
+      "id": "5eaf339c-1295-4eba-aa57-f5a3ed2b3b52",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -760,7 +1048,7 @@
       ]
     },
     {
-      "id": "576e40a3-f8ca-4d96-aab7-9350b5ed2918",
+      "id": "2d2c72e3-129b-47d0-a882-d9e213e097b2",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -778,7 +1066,7 @@
       ]
     },
     {
-      "id": "8d29f6bc-4c2b-4acc-885a-2c10ff548a83",
+      "id": "d7462842-395c-4ced-9858-1a270933d8a0",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -796,7 +1084,7 @@
       ]
     },
     {
-      "id": "476f9a3b-bcd2-4155-936f-08343392570f",
+      "id": "50ffcca3-5ead-4f1b-bfd0-af74acbe9b26",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -814,7 +1102,7 @@
       ]
     },
     {
-      "id": "4cdd9db7-721f-472e-b93f-c1732df4249b",
+      "id": "10e7f339-12b9-4653-93c6-93d5fa772658",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -832,7 +1120,7 @@
       ]
     },
     {
-      "id": "0187e97e-f061-474d-a6ba-e744a78196f3",
+      "id": "50fbbec7-c241-4be3-b63c-b1227c2f9cf5",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -850,7 +1138,7 @@
       ]
     },
     {
-      "id": "3b4dd062-9dc1-4457-be3b-a63a2eab2111",
+      "id": "0b24d628-0740-4965-8145-b242e90b5cb4",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -868,7 +1156,7 @@
       ]
     },
     {
-      "id": "a4ca1527-6abe-4638-aec4-90c6086091c6",
+      "id": "03baee5e-ec1e-4252-8137-4f681d7eead1",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -886,7 +1174,7 @@
       ]
     },
     {
-      "id": "8d85d65e-662e-4200-a5eb-a096d15b9b80",
+      "id": "42cae8c9-d912-4023-8993-87dd33caad5a",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -904,7 +1192,7 @@
       ]
     },
     {
-      "id": "580a1601-fa54-4a23-a380-b7a4a4e09d90",
+      "id": "b988f915-f6b7-49eb-b29d-85be3e8148d4",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -922,7 +1210,7 @@
       ]
     },
     {
-      "id": "3091cdd2-0281-4c9c-8c47-d0192d2ca168",
+      "id": "cc176ca5-0f39-40e6-9516-fe721f6cf640",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -940,7 +1228,7 @@
       ]
     },
     {
-      "id": "4e4a6207-cfbb-4af5-8b15-f7a0a0d41e02",
+      "id": "5e63d633-f5ca-4e63-a401-75aa3e412dbb",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -958,7 +1246,7 @@
       ]
     },
     {
-      "id": "4e3bd31d-b762-4c7b-b321-cbc1a8e1e1e5",
+      "id": "71f86940-1461-4e54-adfd-72a8c47811a0",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -976,7 +1264,7 @@
       ]
     },
     {
-      "id": "f45a1a50-34ad-4ff8-a42b-dea5ed4ad7a6",
+      "id": "57cad4ba-9467-40cf-8ddb-d0b2166c45e8",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -994,7 +1282,7 @@
       ]
     },
     {
-      "id": "88645359-3692-428d-8e97-df18b2dc2a37",
+      "id": "222121e9-83bb-4ca1-9584-d9cf1f897216",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1012,7 +1300,7 @@
       ]
     },
     {
-      "id": "c8dab5f2-0116-443c-b862-e5ed4669d644",
+      "id": "926dedcb-5cfc-4351-be31-c2cf12b4567b",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1030,7 +1318,7 @@
       ]
     },
     {
-      "id": "dadfd0a3-3e9e-463e-b60c-66f10c69872e",
+      "id": "2799fe15-29f6-4c1b-a1c5-31baf587d10f",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1048,7 +1336,7 @@
       ]
     },
     {
-      "id": "979f4a03-55b6-4926-b327-466cfca00eeb",
+      "id": "ed78701f-1287-4d34-8420-21cb359f1064",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1066,7 +1354,7 @@
       ]
     },
     {
-      "id": "18c859ff-72b6-4191-a483-9361ddaa9071",
+      "id": "3a1a2c1a-0609-4c7b-b7bd-07d904e9ec4d",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1084,7 +1372,7 @@
       ]
     },
     {
-      "id": "20718df2-6748-4df5-bc89-b6388511fd77",
+      "id": "3319e2e3-8421-428b-9f97-948c8002a578",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1102,7 +1390,7 @@
       ]
     },
     {
-      "id": "f946bddb-e8f4-4d00-818c-4f23360cedda",
+      "id": "98565bfe-84c1-4fd1-ada9-a757e0116b2d",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1120,7 +1408,7 @@
       ]
     },
     {
-      "id": "ee952407-f367-4b5b-8e7a-d13eda9e3c80",
+      "id": "af6d42e5-9bcc-421d-aa80-1fd3dbac8b65",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1138,7 +1426,7 @@
       ]
     },
     {
-      "id": "f907f1f8-dad6-4746-9a6f-b7c9336d7c8a",
+      "id": "5248a349-347a-477e-b558-b500e67fa6e7",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1156,7 +1444,7 @@
       ]
     },
     {
-      "id": "4f5466bd-468d-47b0-b0ed-5fb28bc02ec7",
+      "id": "40380e38-1017-4e6d-bcac-5a70cb05e54f",
       "type": {
         "name": "grok_pattern",
         "version": "1"
@@ -1174,7 +1462,7 @@
       ]
     },
     {
-      "id": "23630614-adfe-4dd9-9e0f-a076e2e4a536",
+      "id": "9b96cc09-3e68-4d6f-8649-dffadafb8acb",
       "type": {
         "name": "input",
         "version": "1"
@@ -1398,7 +1686,7 @@
       ]
     },
     {
-      "id": "ebd72433-2379-40f1-95a0-2c31279af06a",
+      "id": "ba474a77-80fc-4669-8f57-bab3cb453209",
       "type": {
         "name": "stream",
         "version": "1"
